@@ -1,100 +1,87 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sezai Abi Çay Var mı?</title>
     <style>
+        /* Arka plan ve merkezleme */
         body {
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background-color: black;
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Renkli bir geçiş */
             color: white;
-            font-family: Arial, sans-serif;
+            text-align: center;
             overflow: hidden;
         }
 
-        #message {
-            font-size: 3rem;
-            text-align: center;
-            animation: heartbeat 1s infinite;
+        /* Ana mesaj kutusunun stilleri */
+        .message-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background-color: rgba(0, 0, 0, 0.6); /* Yarı saydam arka plan */
+            border-radius: 20px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1s ease-out;
         }
 
-        #startButton {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px 40px;
-            background-color: red;
-            color: white;
-            font-size: 1.5rem;
+        /* Kalp atışı animasyonu için stil */
+        .message {
+            font-size: 36px;
             font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+            text-transform: uppercase;
+            animation: heartbeat 1.5s infinite; /* Kalp atışı animasyonu */
         }
 
-        #backButton {
-            display: none;
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            padding: 10px 20px;
-            background-color: gray;
-            color: white;
-            font-size: 1rem;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
+        /* Kalp atışı animasyonu */
         @keyframes heartbeat {
-            0% { transform: scale(1); }
-            25% { transform: scale(1.1); }
-            50% { transform: scale(1); }
-            75% { transform: scale(1.1); }
-            100% { transform: scale(1); }
+            0% {
+                transform: scale(1);
+            }
+            25% {
+                transform: scale(1.1);
+            }
+            50% {
+                transform: scale(1);
+            }
+            75% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Fade-in animasyonu */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
-    <button id="startButton">Tıkla</button>
-    <button id="backButton" onclick="goBack()">Geri Dön</button>
 
-    <script>
-        function startPage() {
-            // "Tıkla" düğmesini gizle
-            const startButton = document.getElementById("startButton");
-            startButton.style.display = "none";
+<div class="message-container">
+    <div class="message">Sezai Abi Çay Var mı?</div>
+</div>
 
-            // Mesajı göster
-            const message = document.createElement("div");
-            message.id = "message";
-            message.textContent = "Sezai abi çay var mı?";
-            document.body.appendChild(message);
+<script>
+    setTimeout(function() {
+        window.close(); // Sayfa 10 saniye sonra kapanacak
+    }, 10000); // 10 saniye
+</script>
 
-            // Geri Dön düğmesini 10 saniye sonra göster
-            setTimeout(() => {
-                document.getElementById("backButton").style.display = "block";
-                document.body.removeChild(message);
-            }, 10000);
-        }
-
-        function goBack() {
-            // Kullanıcıyı bir uyarıyla yönlendirin
-            alert("Sayfayı manuel olarak kapatabilirsiniz.");
-        }
-
-        // Başlat düğmesine tıklama
-        const startButton = document.getElementById("startButton");
-        startButton.addEventListener("click", startPage);
-    </script>
 </body>
 </html>
