@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sezai Abi Çay Var mı?</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        #message {
+            font-size: 3rem;
+            text-align: center;
+            animation: heartbeat 1s infinite;
+        }
+
+        #startButton {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px 40px;
+            background-color: red;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #backButton {
+            display: none;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: gray;
+            color: white;
+            font-size: 1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <button id="startButton">Tıkla</button>
+    <button id="backButton" onclick="goBack()">Geri Dön</button>
+
+    <script>
+        function startPage() {
+            // "Tıkla" düğmesini gizle
+            const startButton = document.getElementById("startButton");
+            startButton.style.display = "none";
+
+            // Mesajı göster
+            const message = document.createElement("div");
+            message.id = "message";
+            message.textContent = "Sezai abi çay var mı?";
+            document.body.appendChild(message);
+
+            // Geri Dön düğmesini 10 saniye sonra göster
+            setTimeout(() => {
+                document.getElementById("backButton").style.display = "block";
+                document.body.removeChild(message);
+            }, 10000);
+        }
+
+        function goBack() {
+            // Kullanıcıyı bir uyarıyla yönlendirin
+            alert("Sayfayı manuel olarak kapatabilirsiniz.");
+        }
+
+        // Başlat düğmesine tıklama
+        const startButton = document.getElementById("startButton");
+        startButton.addEventListener("click", startPage);
+    </script>
+</body>
+</html>
